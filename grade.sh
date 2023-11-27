@@ -1,4 +1,4 @@
-CPATH='.;../lib/hamcrest-core-1.3.jar;../lib/junit-4.13.2.jar'
+CPATH='.:../lib/hamcrest-core-1.3.jar:../lib/junit-4.13.2.jar'
 
 rm -rf student-submission
 rm -rf grading-area
@@ -20,15 +20,9 @@ cp student-submission/ListExamples.java grading-area/
 cp TestListExamples.java grading-area/
 cd grading-area
 
-javac -cp . ListExamples.java
+javac -cp $CPATH ListExamples.java
 if [ $? -ne 0 ]; then
     echo "Error: Compilation of ListExamples.java failed."
-    exit 1
-fi
-
-javac -cp . your_grading_tests.java
-if [ $? -ne 0 ]; then
-    echo "Error: Compilation of grading tests failed."
     exit 1
 fi
 
